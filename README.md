@@ -22,4 +22,46 @@
 | 解決策登録機能
 | コメント機能
 
+# データベース設計
 
+## users テーブル
+
+| Column   | Type   | Options     |
+| -------- | ------ | ----------- |
+| nickname | string | null: false |
+| email    | string | null: false |
+| password | string | null: false |
+
+### Association
+
+- has_one  :questions
+
+## questions テーブル
+
+| Column        | Type       | Options     |
+| ------------- | ---------- | ----------- |
+| philosophy_id | integer    | null: false |
+| color_id      | integer    | null: false |
+| my_type_id    | integer    | null: false |
+| like_type_id  | integer    | null: false |
+| prefecture_id | integer    | null: false |
+| food_id       | integer    | null: false |
+| hobby_id      | integer    | null: false |
+| music_id      | integer    | null: false |
+| angry_id      | integer    | null: false |
+| improve_id    | integer    | null: false |
+| text          | text       |             |
+| user          | references |             |
+
+## Association
+- belongs_to :philosophy
+- belongs_to :color
+- belongs_to :my_type
+- belongs_to :like_type
+- belongs_to :prefecture
+- belongs_to :food
+- belongs_to :hobby
+- belongs_to :music
+- belongs_to :angry
+- belongs_to :improve
+- belongs_to :user, optional: true
